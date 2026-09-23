@@ -12,14 +12,16 @@
   <body @php(body_class())>
     @php(wp_body_open())
 
-    <div id="app">
+    @include('partials.page-loader')
+
+    <div id="app" class="flex min-h-screen flex-col">
       <a class="sr-only focus:not-sr-only" href="#main">
         {{ __('Skip to content', 'sage') }}
       </a>
 
       @include('sections.header')
 
-      <main id="main" class="main">
+      <main id="main" class="main flex-1">
         @yield('content')
       </main>
 
@@ -28,6 +30,8 @@
           @yield('sidebar')
         </aside>
       @endif
+
+      @include('partials.breadcrumbs')
 
       @include('sections.footer')
     </div>
